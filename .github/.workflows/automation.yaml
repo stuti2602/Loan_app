@@ -1,0 +1,41 @@
+# link of test documentation in yaml:
+# https://docs:
+#  github:
+#    com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-python:
+
+# YAML
+
+# pipline name
+name: loan_app_test
+
+# whenever pushes on the master branch this will execute
+on:
+  push:
+    Branches:
+      - main
+
+# 1 job with 4 steps
+
+jobs:
+  build:
+    runs-on: ubuntu-latest(pytest happen on it) /windows/ MacOS
+    steps:
+      - uses: actions/checout@v3 #(version v3) GitHub has ready mate function which can use here
+      - name: Install python 3
+        uses: actions/setup-python@v4
+        with:
+          python-version:3.9
+      - name: Install Dependencies any_random_thing
+        runs:
+          python -m pip install --upgrade pip
+          pip install pytest flask scikit-learn
+      - name: run test
+        runs:
+          pytest
+
+# moment when i commit and push it go to master branch and trigger this and run the file
+# and if the action fails it will show on githb desktop
+
+
+
+
